@@ -25,8 +25,6 @@ module.exports = (app) => {
 
 	app.get('/users', authMiddlewear, errorChecking(async (req, res) => {
 		const users = await userModel.getUserList();
-		if (!!users) {
-			res.json(users);
-		}
+		res.json(users);
 	}));
 };

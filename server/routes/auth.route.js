@@ -1,12 +1,13 @@
 const userModel     = require('../models/user.model');
 const errorChecking = require('../helpers/errorChecking');
 
-module.exports = (app) => {
+module.exports      = (app) => {
 	app.post('/signin', errorChecking(async (req, res) => {
 		const newUser = req.body;
 		const dbUser  = await userModel.getUserByEmail(newUser.email);
 		if (!dbUser) {
-			res.json(await userModel.create(newUser));
+			const user = await userModel.create(newUser);
+			res.json(user);
 		} else {
 			res.status(302).send('user already exist');
 		}

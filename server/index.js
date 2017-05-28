@@ -4,7 +4,7 @@ const session    = require('express-session');
 const mongoose   = require('mongoose');
 const bodyParser = require('body-parser');
 
-const routes     = require('./routes');
+const routes = require('./routes');
 
 const app = express();
 mongoose.connect('mongodb://localhost:27017/nodejs-chat');
@@ -24,3 +24,5 @@ routes.initialize(app);
 app.listen(5000, () => {
 	console.log('Server started on 5000 port');
 });
+
+module.exports.app = app;

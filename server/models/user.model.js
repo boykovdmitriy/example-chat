@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const async    = require("async");
 
 const userSchema = new mongoose.Schema({
 	password   : {type: String, required: true},
@@ -37,7 +36,7 @@ exports.auth = async (email, password) => {
 };
 
 exports.changeUserInfo = async (id, userInfo) => {
-	return await UserModel.findOneAndUpdate({id: id}, userInfo);
+	return await UserModel.findOneAndUpdate({_id: id}, userInfo);
 };
 
 exports.getUserList = async () => {
