@@ -21,15 +21,15 @@ module.exports = (app) => {
         }
     }));
 
+    app.get('/messages/:id', authMiddlewear, errorChecking(async (req, res) => {
+        const conversationId = req.params.id;
+        res.json(await conversationModel.getMessages(conversationId));
+    }));
+
     app.put('/conversation', authMiddlewear, errorChecking(async (req, res) => {
         const id = req.session.userId;
         const conv = req.body;
         res.json(await conversationModel.createConversation(id, conv.userId));
-    }));
-
-    app.get('/messages/:id', authMiddlewear, errorChecking(async (req, res) => {
-        const conversationId = req.params.id;
-        res.json(await conversationModel.getMessages(conversationId));
     }));
 
     app.put('/conversation/message', authMiddlewear, errorChecking(async (req, res) => {
