@@ -27,6 +27,11 @@ module.exports = (app) => {
         res.json(await conversationModel.createConversation(id, conv.userId));
     }));
 
+    app.get('/messages/:id', authMiddlewear, errorChecking(async (req, res) => {
+        const conversationId = req.params.id;
+        res.json(await conversationModel.getMessages(conversationId));
+    }));
+
     app.put('/conversation/message', authMiddlewear, errorChecking(async (req, res) => {
         const conv = req.body;
         const id = req.session.userId;

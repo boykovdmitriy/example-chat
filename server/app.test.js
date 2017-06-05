@@ -326,7 +326,7 @@ describe('conversations', function () {
                             .send({id: conversations[0]._id, message: 'таки да'})
                             .expect(200)
                             .then(() => {
-                                agent.get('/conversation/' + conversations[0]._id)
+                                agent.get('/messages/' + conversations[0]._id)
                                     .expect(200)
                                     .expect((res) => {
                                         const conv = res.body;

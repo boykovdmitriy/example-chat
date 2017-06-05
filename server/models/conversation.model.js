@@ -37,7 +37,12 @@ exports.addMessage = async (conversationId, message) => {
 };
 
 exports.getConversation = async (conversationId) => {
-    return await conversationModel.findOne({_id: conversationId})
+    return await conversationModel.findOne({_id: conversationId}, {messages: 0})
         .populate('user1')
         .populate('user2');
+};
+
+
+exports.getMessages = async (conversationId) => {
+    return await conversationModel.findOne({_id: conversationId}, {messages: 1});
 };

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88a81bd6-6a05-42c7-8530-00f4a3188812" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/app.test.js" afterPath="$PROJECT_DIR$/server/app.test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/conversation.model.js" afterPath="$PROJECT_DIR$/server/models/conversation.model.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/conversation.route.js" afterPath="$PROJECT_DIR$/server/routes/conversation.route.js" />
@@ -26,8 +25,8 @@
       <file leaf-file-name="app.test.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/app.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="332" column="0" lean-forward="false" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
               <folding>
                 <element signature="e#185#324#0" expanded="false" />
                 <element signature="e#350#841#0" expanded="false" />
@@ -71,8 +70,8 @@
       <file leaf-file-name="conversation.route.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/routes/conversation.route.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="148">
+              <caret line="15" column="63" lean-forward="true" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -81,8 +80,8 @@
       <file leaf-file-name="conversation.model.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/models/conversation.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="321">
+              <caret line="46" column="78" lean-forward="false" selection-start-line="46" selection-start-column="78" selection-end-line="46" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -127,8 +126,8 @@
         <option value="$PROJECT_DIR$/server/routes/user.route.js" />
         <option value="$PROJECT_DIR$/server/routes/auth.route.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/server/models/conversation.model.js" />
         <option value="$PROJECT_DIR$/server/routes/conversation.route.js" />
+        <option value="$PROJECT_DIR$/server/models/conversation.model.js" />
         <option value="$PROJECT_DIR$/server/app.test.js" />
       </list>
     </option>
@@ -2047,12 +2046,12 @@
       <workItem from="1495902615190" duration="427000" />
       <workItem from="1495967629502" duration="3301000" />
       <workItem from="1496084577407" duration="296000" />
-      <workItem from="1496609703791" duration="6442000" />
+      <workItem from="1496609703791" duration="7975000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58109000" />
+    <option name="totallyTimeSpent" value="59642000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
@@ -2377,26 +2376,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/models/conversation.model.js">
+    <entry file="file://$PROJECT_DIR$/server/routes/conversation.route.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="148">
+          <caret line="15" column="63" lean-forward="true" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/conversation.route.js">
+    <entry file="file://$PROJECT_DIR$/server/models/conversation.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="321">
+          <caret line="46" column="78" lean-forward="false" selection-start-line="46" selection-start-column="78" selection-end-line="46" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/app.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="332" column="0" lean-forward="false" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
           <folding>
             <element signature="e#185#324#0" expanded="false" />
             <element signature="e#350#841#0" expanded="false" />
