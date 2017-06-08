@@ -11,10 +11,10 @@ mongoose.connect('mongodb://localhost:27017/nodejs-chat');
 
 app.use(bodyParser.json());
 app.use(session({
-	secret           : 'secret key',
-	name             : "secretCook",
-	resave           : true,
-	saveUninitialized: true
+    secret           : 'secret key',
+    name             : "secretCook",
+    resave           : true,
+    saveUninitialized: true
 }));
 
 app.use(helmet());
@@ -22,7 +22,7 @@ app.use(helmet());
 routes.initialize(app);
 
 app.listen(5000, () => {
-	console.log('Server started on 5000 port');
+    console.log('Server started on 5000 port');
 });
 
 module.exports.app = app;

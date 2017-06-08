@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const conversationSchema = new mongoose.Schema({
-    user1: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    user2: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    user1   : {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    user2   : {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     messages: [{
-        time: String,
+        time   : String,
         message: String,
-        sender: mongoose.Schema.Types.ObjectId
+        sender : mongoose.Schema.Types.ObjectId
     }]
 });
 
@@ -22,8 +22,8 @@ const conversationModel = mongoose.model('Conversation', conversationSchema);
 
 exports.createConversation = async (fromId, toId) => {
     return await conversationModel.create({
-        user1: fromId,
-        user2: toId,
+        user1   : fromId,
+        user2   : toId,
         messages: []
     });
 };
@@ -38,8 +38,8 @@ exports.addMessage = async (conversationId, message) => {
 
 exports.getConversation = async (conversationId) => {
     return await conversationModel.findOne({_id: conversationId}, {messages: 0})
-        .populate('user1')
-        .populate('user2');
+                                  .populate('user1')
+                                  .populate('user2');
 };
 
 

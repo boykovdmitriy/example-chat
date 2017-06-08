@@ -1,1 +1,1 @@
-# nodejs-chat
+# example-chat
