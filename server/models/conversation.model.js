@@ -10,6 +10,8 @@ const conversationSchema = new mongoose.Schema({
     }]
 });
 
+const conversationModel = mongoose.model('Conversation', conversationSchema);
+
 conversationSchema.statics.getConversations = function (userId) {
     return this.find({$or: [{user1: userId}, {user2: userId}]}, {messages: 0});
 };
@@ -17,8 +19,6 @@ conversationSchema.statics.getConversations = function (userId) {
 conversationSchema.statics.addMessage = function (conversationId, message) {
     return this.update({_id: conversationId}, {$push: {messages: message}});
 };
-
-const conversationModel = mongoose.model('Conversation', conversationSchema);
 
 exports.createConversation = async (fromId, toId) => {
     return await conversationModel.create({
