@@ -36,13 +36,13 @@ after(function (done) {
 });
 
 describe('authorization', function () {
-    it('/signin : adding new user', function (done) {
+    it('/signup : adding new user', function (done) {
         request(app)
-            .post('/signin')
+            .post('/signup')
             .send(user)
             .set('Accept', 'application/json')
             .expect(200)
-            .end(function (err, res) {
+            .end(function (err) {
                 if (err) {
                     return done(err);
                 }
@@ -50,13 +50,13 @@ describe('authorization', function () {
             });
     });
 
-    it('/signin: user already exist', function (done) {
+    it('/signup: user already exist', function (done) {
         request(app)
-            .post('/signin')
+            .post('/signup')
             .send(user)
             .set('Accept', 'application/json')
             .expect(302)
-            .end(function (err, res) {
+            .end(function (err) {
                 if (err) {
                     return done(err);
                 }
@@ -64,13 +64,13 @@ describe('authorization', function () {
             });
     });
 
-    it('/signup', function (done) {
+    it('/signin', function (done) {
         request(app)
-            .post('/signup')
+            .post('/signin')
             .send(user)
             .set('Accept', 'application/json')
             .expect(200)
-            .end(function (err, res) {
+            .end(function (err) {
                 if (err) {
                     return done(err);
                 }
@@ -78,36 +78,18 @@ describe('authorization', function () {
             });
     });
 
-    it('/signup: signup with unregistered user', function (done) {
+    it('/signin: signin with unregistered user', function (done) {
         request(app)
-            .post('/signup')
+            .post('/signin')
             .send({email: "mail@ma.ru", password: "1231"})
             .set('Accept', 'application/json')
             .expect(403)
-            .end(function (err, res) {
+            .end(function (err) {
                 if (err) {
                     return done(err);
                 }
                 done();
             });
-    });
-
-    it('/signin many', function (done) {
-        let pr = [];
-        userList.forEach(x => {
-            const res = request(app)
-                .post('/signin')
-                .send(x)
-                .set('Accept', 'application/json')
-                .expect(200);
-            pr.push(res);
-        });
-
-        Promise.all(pr).then(() => {
-            done();
-        }, (err) => {
-            done(err);
-        });
     });
 
     it('/signup many', function (done) {
@@ -127,12 +109,30 @@ describe('authorization', function () {
             done(err);
         });
     });
+
+    it('/signin many', function (done) {
+        let pr = [];
+        userList.forEach(x => {
+            const res = request(app)
+                .post('/signin')
+                .send(x)
+                .set('Accept', 'application/json')
+                .expect(200);
+            pr.push(res);
+        });
+
+        Promise.all(pr).then(() => {
+            done();
+        }, (err) => {
+            done(err);
+        });
+    });
 });
 
 describe('user', function () {
     it('/user/me: with autherization user', function (done) {
         const agent = request.agent(app);
-        agent.post('/signup')
+        agent.post('/signin')
              .set('Accept', 'application/json')
              .send(user)
              .expect(200)
@@ -144,7 +144,7 @@ describe('user', function () {
                           const userModel = res.body;
                           return userModel.email === user.email;
                       })
-                      .end(function (err, res) {
+                      .end(function (err) {
                           if (err) {
                               return done(err);
                           }
@@ -160,7 +160,7 @@ describe('user', function () {
             .post('/signout')
             .set('Accept', 'application/json')
             .expect(200)
-            .end(function (err, res) {
+            .end(function (err) {
                 if (err) {
                     return done(err);
                 }
@@ -170,7 +170,7 @@ describe('user', function () {
             .get('/user/me')
             .set('Accept', 'application/json')
             .expect(401)
-            .end(function (err, res) {
+            .end(function (err) {
                 if (err) {
                     return done(err);
                 }
@@ -180,7 +180,7 @@ describe('user', function () {
 
     it('/users: with authorization user', function (done) {
         const agent = request.agent(app);
-        agent.post('/signup')
+        agent.post('/signin')
              .set('Accept', 'application/json')
              .send(user)
              .expect(200)
@@ -197,7 +197,7 @@ describe('user', function () {
                           });
                           return true;
                       })
-                      .end(function (err, res) {
+                      .end(function (err) {
                           if (err) {
                               return done(err);
                           }
@@ -212,7 +212,7 @@ describe('user', function () {
         request(app).get('/users')
                     .set('Accept', 'application/json')
                     .expect(401)
-                    .end(function (err, res) {
+                    .end(function (err) {
                         if (err) {
                             return done(err);
                         }
@@ -224,7 +224,7 @@ describe('user', function () {
 describe('conversations', function () {
     it('create conversation. PUT conversation', function (done) {
         const agent = request.agent(app);
-        agent.post('/signup')
+        agent.post('/signin')
              .set('Accept', 'application/json')
              .send(user)
              .expect(200)
@@ -241,14 +241,14 @@ describe('conversations', function () {
                                    const userModel = res.body;
                                    return userModel.user2._id === users[1]._id;
                                })
-                               .end(function (err, res) {
+                               .end(function (err) {
                                    if (err) {
                                        return done(err);
                                    }
                                    done();
                                });
                       })
-                      .end(function (err, res) {
+                      .end(function (err) {
                           if (err) {
                               return done(err);
                           }
@@ -260,7 +260,7 @@ describe('conversations', function () {
 
     it('get conversations. Conversations exists', function (done) {
         const agent = request.agent(app);
-        agent.post('/signup')
+        agent.post('/signin')
              .set('Accept', 'application/json')
              .send(user)
              .expect(200)
@@ -269,9 +269,9 @@ describe('conversations', function () {
                       .expect(200)
                       .expect((res) => {
                           const users = [...res.body];
-                          return users.length != 0;
+                          return users.length !== 0;
                       })
-                      .end(function (err, res) {
+                      .end(function (err) {
                           if (err) {
                               return done(err);
                           }
@@ -284,7 +284,7 @@ describe('conversations', function () {
 
     it('get conversations. Conversations don\'t exists', function (done) {
         const agent = request.agent(app);
-        agent.post('/signup')
+        agent.post('/signin')
              .set('Accept', 'application/json')
              .send(userList[2])
              .expect(200)
@@ -293,9 +293,9 @@ describe('conversations', function () {
                       .expect(200)
                       .expect((res) => {
                           const users = [...res.body];
-                          return users.length == 0;
+                          return users.length === 0;
                       })
-                      .end(function (err, res) {
+                      .end(function (err) {
                           if (err) {
                               return done(err);
                           }
@@ -308,7 +308,7 @@ describe('conversations', function () {
 
     it('get conversation.', function (done) {
         const agent = request.agent(app);
-        agent.post('/signup')
+        agent.post('/signin')
              .set('Accept', 'application/json')
              .send(user)
              .expect(200)
@@ -340,7 +340,7 @@ describe('conversations', function () {
 
     it('send message.', function (done) {
         const agent = request.agent(app);
-        agent.post('/signup')
+        agent.post('/signin')
              .set('Accept', 'application/json')
              .send(user)
              .expect(200)
@@ -358,7 +358,7 @@ describe('conversations', function () {
                                         .expect(200)
                                         .expect((res) => {
                                             const conv = res.body;
-                                            return conv.messages.length != 0;
+                                            return conv.messages.length !== 0;
                                         })
                                         .end((err) => {
                                             if (err) {

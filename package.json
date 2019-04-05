@@ -1,35 +1,35 @@
 {
-  "name"           : "nodejs-chat",
-  "version"        : "1.0.0",
-  "description"    : "",
-  "main"           : "index.js",
-  "author"         : "",
-  "license"        : "ISC",
-  "bugs"           : {
+  "name": "nodejs-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
     "url": "https://github.com/boykovdmitriy/nodejs-chat/issues"
   },
-  "homepage"       : "https://github.com/boykovdmitriy/nodejs-chat#readme",
-  "repository"     : {
+  "homepage": "https://github.com/boykovdmitriy/nodejs-chat#readme",
+  "repository": {
     "type": "git",
-    "url" : "git+https://github.com/boykovdmitriy/nodejs-chat.git"
+    "url": "git+https://github.com/boykovdmitriy/nodejs-chat.git"
   },
-  "scripts"        : {
+  "scripts": {
     "start": "mongod | node server/index.js",
-    "test" : "mongod | mocha ./server/app.test.js"
+    "test": "mongod | mocha ./server/app.test.js"
   },
-  "dependencies"   : {
-    "body-parser"    : "1.17.2",
-    "connect-mongo"  : "1.3.2",
-    "express"        : "4.15.3",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "connect-mongo": "1.3.2",
+    "express": "4.15.3",
     "express-session": "1.15.3",
-    "helmet"         : "3.6.1",
-    "mongoose"       : "4.7.0",
-    "morgan"         : "1.7.0"
+    "helmet": "3.6.1",
+    "mongoose": "4.7.0",
+    "morgan": "1.9.1"
   },
   "devDependencies": {
-    "assert"      : "1.4.1",
-    "mocha"       : "3.4.2",
+    "assert": "1.4.1",
+    "mocha": "3.4.2",
     "mocha-logger": "1.0.5",
-    "supertest"   : "3.0.0"
+    "supertest": "3.0.0"
   }
 }
